@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORF Wetter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header mit ORF Logo -->
+        <header class="header">
+            <div class="logo-container">
+                <svg class="orf-logo" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="40" fill="#e20a16" rx="4"/>
+                    <text x="60" y="28" text-anchor="middle" fill="white" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="24">ORF</text>
+                </svg>
+                <span class="logo-text">Wetter</span>
+            </div>
+        </header>
+
+        <!-- Suchbereich -->
+        <main class="main-content">
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input 
+                        type="text" 
+                        id="location-input" 
+                        class="search-input" 
+                        placeholder="Ort eingeben (z.B. Wien, Graz, Salzburg...)"
+                        autocomplete="off"
+                    >
+                    <button id="search-btn" class="search-btn">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                <ul id="suggestions" class="suggestions-list"></ul>
+            </div>
+
+            <!-- Wetter-Anzeige -->
+            <div id="weather-display" class="weather-display hidden">
+                <div class="weather-card">
+                    <div class="weather-header">
+                        <h2 id="location-name" class="location-name">-</h2>
+                        <p id="weather-date" class="weather-date">-</p>
+                    </div>
+                    
+                    <div class="weather-main">
+                        <div class="weather-icon-container">
+                            <span id="weather-icon" class="weather-icon">☀️</span>
+                        </div>
+                        <div class="temperature-container">
+                            <span id="temperature" class="temperature">--</span>
+                            <span class="temperature-unit">°C</span>
+                        </div>
+                        <p id="weather-description" class="weather-description">-</p>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">💧</span>
+                            <div class="detail-info">
+                                <span class="detail-label">Luftfeuchtigkeit</span>
+                                <span id="humidity" class="detail-value">--%</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">💨</span>
+                            <div class="detail-info">
+                                <span class="detail-label">Wind</span>
+                                <span id="wind-speed" class="detail-value">-- km/h</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🌡️</span>
+                            <div class="detail-info">
+                                <span class="detail-label">Gefühlt</span>
+                                <span id="feels-like" class="detail-value">--°C</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">☁️</span>
+                            <div class="detail-info">
+                                <span class="detail-label">Bewölkung</span>
+                                <span id="cloud-cover" class="detail-value">--%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fehleranzeige -->
+            <div id="error-display" class="error-display hidden">
+                <p id="error-message" class="error-message"></p>
+            </div>
+
+            <!-- Ladeanzeige -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Wetterdaten werden geladen...</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Daten bereitgestellt von <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
